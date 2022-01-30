@@ -3,8 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 function Navbar() {
   const backgroundAll = "#007d8c";
   const backgroundClick = "#97d6e3";
-  const textColor = "#fff"
-  const textColorClick = "#000"
+  const textColor = "#fff";
+  const textColorClick = "#000";
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -40,7 +40,7 @@ function Navbar() {
               background: backgroundIcon("/search")
                 ? backgroundClick
                 : backgroundAll,
-                color: backgroundIcon("/search") ? textColorClick : textColor,
+              color: backgroundIcon("/search") ? textColorClick : textColor,
             }}
           >
             <h3 className="nav-bar-text">Search</h3>
@@ -52,7 +52,7 @@ function Navbar() {
               background: backgroundIcon("/song")
                 ? backgroundClick
                 : backgroundAll,
-                color: backgroundIcon("/song") ? textColorClick : textColor,
+              color: backgroundIcon("/song") ? textColorClick : textColor,
             }}
           >
             <h3 className="nav-bar-text">Song</h3>
@@ -64,7 +64,7 @@ function Navbar() {
               background: backgroundIcon("/songlist")
                 ? backgroundClick
                 : backgroundAll,
-                color: backgroundIcon("/songlist") ? textColorClick : textColor,
+              color: backgroundIcon("/songlist") ? textColorClick : textColor,
             }}
           >
             <h3 className="nav-bar-text">Song-List</h3>
