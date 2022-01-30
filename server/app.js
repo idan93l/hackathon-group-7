@@ -10,9 +10,7 @@ app.use(express.urlencoded({extended : true}))
 require("./db/mongoose")
 
 
-app.get('/', (req,res) => {
-  res.send("hello world")
-})
+
 
 // const axios = require("axios");
 // const options = {
