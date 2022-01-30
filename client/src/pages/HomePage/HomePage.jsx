@@ -16,10 +16,25 @@ const HomePage = () => {
                 <SearchInput />
             </div>
             <div className="about-section">
-                <p>
-                    Search for the song of your choosing, translate it to the
-                    language you want and discuss it with others alike.
-                </p>
+                <div className="about-item">
+                    <h2>Search!</h2>
+                    <p>
+                        Search for the song of your choosing!
+                    </p>
+                </div>
+                <div className="about-item">
+                    <h2>Tranlsate!</h2>
+                    <p>
+                        Translate the song to any language we provide!
+                    </p>
+                </div>
+                <div className="about-item">
+                    <h2>Discuss!</h2>
+                    <p>
+                        Comment on songs and see what others say!
+                    </p>
+                </div>
+                
             </div>
         </div>
     );
