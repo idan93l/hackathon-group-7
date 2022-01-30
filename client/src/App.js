@@ -1,11 +1,11 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import HomePage from "./pages/HomePage";
-import Search from "./pages/Search";
-import Song from "./pages/Song";
-import SongList from "./pages/SongList";
+import Navbar from "./components/Navbar/Navbar";
+import HomePage from "./pages/HomePage/HomePage";
+import Search from "./pages/Search/Search";
+import Song from "./pages/Song/Song";
+import SongList from "./pages/SongList/SongList";
 
 function App() {
   return (
