@@ -4,8 +4,10 @@ const songRoute = express.Router()
 
 
 songRoute.get("/", songs.getAllSongs)
+songRoute.get("/:songId", songs.getSong)
 songRoute.post("/", songs.postSong)
-songRoute.delete("/:id",songs.deleteSong) 
+songRoute.delete("/:songId",songs.deleteSong) 
+
 module.exports = songRoute
 
 
