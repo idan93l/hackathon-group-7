@@ -9,9 +9,8 @@ app.use(cors())
 app.use(express.urlencoded({extended : true}))
 require("./db/mongoose")
 
-app.get('/', (req,res) => {
-    console.log('hello from frontend!')
-})
+
+
 
 
 
