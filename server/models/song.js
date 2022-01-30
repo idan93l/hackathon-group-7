@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 
 const songSchema = new mongoose.Schema({
+
   songName: {
     type: String,
     require: true
@@ -9,12 +10,7 @@ const songSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
-    validate(value) {
-      if (!validator.isDate(value)) {
-        throw new Error("Invalid Date");
-      }
-    }
-  },
+    },
   writer: {
     type: String,
     require: true
@@ -25,7 +21,7 @@ const songSchema = new mongoose.Schema({
   },
   comments: [
     {
-      comment: {
+      text: {
         type: String
       },
       owner: {

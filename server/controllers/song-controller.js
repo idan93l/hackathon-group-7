@@ -11,10 +11,11 @@ const getAllSongs = async (req, res) => {
 }
 
 const postSong  = async (req, res) => {
-    const {name, writer, lyrics, comment} = req.body;
-    const newSong = new Song({name, writer, lyrics})
+    const {name, lyrics, comments, owner} = req.body;
+    const newSong = new Song({name, lyrics, comments, owner})
     try {
-
+        await Song.save(newSong);
+        res.status(201).send(newSong)
     } catch (e) {
         res.status(400).send(e)
     }
@@ -23,4 +24,4 @@ const postSong  = async (req, res) => {
 
 
 
-module.exports = {getAllSongs}
+module.exports = {getAllSongs, postSong}
