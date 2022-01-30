@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate} from "react-router-dom";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import "./homepage.css";
 
 const HomePage = () => {
+    const navigate = useNavigate();
     return (
         <div className="homepage">
             <div className="top-section">
@@ -13,7 +15,7 @@ const HomePage = () => {
                         the language you want and discuss it with others alike!
                     </p>
                 </div>
-                <SearchInput />
+                <SearchInput handleClick={() => navigate("/song")} />
             </div>
             <div className="about-section">
                 <div className="about-item">
@@ -40,7 +42,7 @@ const HomePage = () => {
                     <h1 className="main-title">What are you waiting for?</h1>
                     <p className="sub-title">Get started now!</p>
                 </div>
-                <SearchInput />
+                <SearchInput handleClick={() => navigate("/song")} />
             </div>
         </div>
     );
