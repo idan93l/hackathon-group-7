@@ -25,7 +25,7 @@ app.post("/translate", (req, res) => {
         method: "POST",
         url: "https://microsoft-translator-text.p.rapidapi.com/translate",
         params: {
-            to: "ar",
+            to: "he",
             "api-version": "3.0",
             profanityAction: "NoAction",
             textType: "plain",
