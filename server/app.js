@@ -17,21 +17,23 @@ app.get('/', (req,res) => {
 
 
 app.post('/translate', (req,res) => {
+    const { text } = req.body
     const options = {
         method: 'POST',
+        
         url: 'https://microsoft-translator-text.p.rapidapi.com/translate',
-        params: {to: 'he', 'api-version': '3.0', profanityAction: 'NoAction', textType: 'plain'},
+        params: {to: 'ar', 'api-version': '3.0', profanityAction: 'NoAction', textType: 'plain'},
         headers: {
           'content-type': 'application/json',
           'x-rapidapi-host': 'microsoft-translator-text.p.rapidapi.com',
           'x-rapidapi-key': `${process.env.TRANS_API_KEY}`
         },
-        data: [{Text: 'I would really like to drive your car around the block a few times.'}]
+        data: [{Text: text}]
     };
     axios.request(options).then(function (response) {
-        console.log(response.data[0].translations);
+        res.status(200).send(response.data[0].translations)
     }).catch(function (error) {
-        console.error(error);
+        res.status(400).send(error);
     });
 })
   
