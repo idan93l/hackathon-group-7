@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchInput from '../../components/SearchInput/SearchInput'
+import songApi from './../../api/api'
 import './songList.css';
 
-function SongList() {
+function SongList({setChosenSong}) {
   const [songs, setSongs] = useState([]);
 
-  const handleSearch = (e) => {
-    setSongs([]);
-  }
+
 
   const displaySongs = () => {
-    return songs.map((song, i) => {
-      return <div key={i}>song {i}</div>
+    return songs.map((song) => {
+      return <div onClick={() => setChosenSong(song)} key={song.songId}>{song.songArtist} - {song.songName}</div>
     })
   }
 
+  const getSongs = async () => {
+    const songList = await songApi.get('/')
+    setSongs(songList.data)
+  }
+
+  useEffect(() => {
+    getSongs()
+  }, [])
+
+
   return <div className="page">
-      <div>
-          <SearchInput clickHandle={handleSearch} />
-      </div>
+
       <div>
         {displaySongs()}
       </div>

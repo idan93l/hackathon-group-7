@@ -3,6 +3,7 @@ import axios from "axios";
 import WriteComment from "../../components/WriteComment/WriteComment";
 import "./song.css";
 import CommentCard from "../../components/CommentCard/CommentCard";
+import songApi from './../../api/api'
 
 function Song() {
     const id = 1;
@@ -30,7 +31,7 @@ function Song() {
             .join(" ")
             .replaceAll("<br>", ",,,")
             .replace(",,, ", "");
-        const response = await axios.post("http://localhost:5000/translate", {
+        const response = await songApi.post("/translate", {
             lang: lang,
             text: text,
         });
@@ -45,13 +46,13 @@ function Song() {
     };
 
     const getLyrics = async () => {
-        const response = await axios.get(`http://localhost:5000/scrape/${id}`);
+        const response = await songApi.get(`/scrape/${id}`);
         lyricsRef.current.innerHTML = response.data;
         setLyrics(response.data);
     };
 
     const getComments = async () => {
-        const response = await axios.get(`http://localhost:5000/song/${id}/comments`);
+        const response = await songApi.get(`/song/${id}/comments`);
         setComments(response.data);
     }
 

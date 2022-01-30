@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import SearchInput from '../../components/SearchInput/SearchInput'
 import './search.css';
 
-function Search() {
+function Search({setChosenSong}) {
   const [songs, setSongs] = useState([]);
+  const [query, setQuery] = useState('')
 
   const getSongs = async () => {
-    const response = await axios.get(`/search`)
+    const response = await axios.post(`/search`, {
+      body: query
+    })
   }
 
   const displaySongs = () => {
@@ -15,8 +18,12 @@ function Search() {
       return <div key={i}>song {i}</div>
     })
   }
+
+  useEffect(() => {
+    getSongs()
+  },[query])
   return <div className="page">
-    <SearchInput />
+    <SearchInput query={query} handleClick={setQuery} />
     {displaySongs()}
   </div>
 }
