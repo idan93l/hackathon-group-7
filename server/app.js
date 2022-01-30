@@ -11,7 +11,7 @@ require("./db/mongoose")
 
 
 app.get('/', (req,res) => {
-    console.log('hello from frontend!')
+  res.send("hello world")
 })
 
 // const axios = require("axios");
