@@ -1,25 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios'
+import SearchInput from '../../components/SearchInput/SearchInput'
 import './search.css';
 
 function Search() {
-  const [lyrics, setLyrics] = useState("");
+  const [songs, setSongs] = useState([]);
 
-  const lyricsRef = useRef();
-
-  useEffect(() => {
-    getLyrics();
-  }, [])
-
-  const getLyrics = async () => {
-    const response = await axios.get("http://localhost:5000/scrape");
-    console.log(response);
-    setLyrics(response.data)
-    lyricsRef.current.innerHTML = response.data
+  const getSongs = async () => {
+    const response = await axios.get(`/search`)
   }
 
+  const displaySongs = () => {
+    return songs.map((song, i) => {
+      return <div key={i}>song {i}</div>
+    })
+  }
   return <div className="page">
-    <div ref={lyricsRef}></div>
-  </div>;
+    <SearchInput />
+    {displaySongs()}
+  </div>
 }
 export default Search;
