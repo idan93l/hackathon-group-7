@@ -45,7 +45,7 @@ const HomePage = () => {
                 <SearchInput handleClick={() => navigate("/song")} />
             </div>
         </div>
-    );
+  );
 };
 
 export default HomePage;
