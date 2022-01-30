@@ -1,0 +1,25 @@
+:root {
+    --search-height: 3vh;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    height: var(--search-height);
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+}
+
+.search-button {
+    height: var(--search-height);
+    background: #d53f23;
+    font-size: 2rem;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}

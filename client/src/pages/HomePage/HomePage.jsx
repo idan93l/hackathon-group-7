@@ -17,24 +17,30 @@ const HomePage = () => {
             </div>
             <div className="about-section">
                 <div className="about-item">
-                    <h2>Search!</h2>
-                    <p>
+                    <h2 className="item-title">Search!</h2>
+                    <p className="item-desc">
                         Search for the song of your choosing!
                     </p>
                 </div>
                 <div className="about-item">
-                    <h2>Tranlsate!</h2>
-                    <p>
+                    <h2 className="item-title">Tranlsate!</h2>
+                    <p className="item-desc">
                         Translate the song to any language we provide!
                     </p>
                 </div>
                 <div className="about-item">
-                    <h2>Discuss!</h2>
-                    <p>
+                    <h2 className="item-title">Discuss!</h2>
+                    <p className="item-desc">
                         Comment on songs and see what others say!
                     </p>
                 </div>
-                
+            </div>
+            <div className="bottom-section">
+                <div>
+                    <h1 className="main-title">What are you waiting for?</h1>
+                    <p className="sub-title">Get started now!</p>
+                </div>
+                <SearchInput />
             </div>
         </div>
     );
