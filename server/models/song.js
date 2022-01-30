@@ -8,6 +8,10 @@ const songSchema = new mongoose.Schema({
     type: String,
     require: true
   },
+  songArtist: {
+    type: String,
+    require: true
+  },
   lyrics: {
     type: String,
     require: true
