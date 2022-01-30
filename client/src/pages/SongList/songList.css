@@ -1,0 +1,7 @@
+.page {
+    min-height: 100vh;
+    background: #97d6e3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
