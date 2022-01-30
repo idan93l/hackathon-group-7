@@ -5,7 +5,6 @@ import './song.css'
 
 function Song() {
   const [lyrics, setLyrics] = useState("");
-  const [translatedLyrics, setTranslatedLyrics] = useState("");
   const [lang, setLang] = useState("")
 
   const lyricsRef = useRef();
@@ -23,7 +22,6 @@ function Song() {
     })
     const newlyrics = response.data[0].text.replaceAll(",,,", "<br>")
     translatedLyricsRef.current.innerHTML = newlyrics
-    setTranslatedLyrics(newlyrics)
   }
 
   const getLyrics = async () => {
@@ -34,9 +32,27 @@ function Song() {
 
   return (
     <div className="page">
-      <div ref={lyricsRef}></div>
-      <div ref={translatedLyricsRef} className='rtl-text'> {translatedLyrics}</div>
-      <button onClick={getLyricsContent}>click</button>
+      <div className='all-lyrics-section'>
+        <div ref={lyricsRef} className='lyrics-container'></div>
+        <div className='translated-lyrics-container'>
+          <div>
+            <div>
+              <input type={"radio"} id='he' name='lang' value={"he"}></input>
+              <label for={"he"}>Hebrew</label>
+            </div>
+            <div>
+              <input type={"radio"} id='ar' name='lang' value={"ar"}></input>
+              <label for={"ar"}>Arabic</label>
+            </div>
+            <div>
+              <input type={"radio"} id='ru' name='lang' value={"ru"}></input>
+              <label for={"ru"}>Russian</label>
+            </div>
+            <button onClick={getLyricsContent}>click</button>
+          </div>
+          <div ref={translatedLyricsRef} className='lyrics-contianer'></div>
+        </div>
+      </div>
       <WriteComment />
     </div>
   );
