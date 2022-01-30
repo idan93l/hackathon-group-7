@@ -2,16 +2,21 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import WriteComment from "../../components/WriteComment/WriteComment";
 import "./song.css";
+import CommentCard from "../../components/CommentCard/CommentCard";
 
 function Song() {
+    const id = 1;
+
     const [lyrics, setLyrics] = useState("");
     const [lang, setLang] = useState("");
+    const [comments, setComments] = useState([]);
 
     const lyricsRef = useRef();
     const translatedLyricsRef = useRef();
 
     useEffect(() => {
         getLyrics();
+        getComments();
     }, []);
 
     const getLyricsContent = async (e) => {
@@ -40,10 +45,21 @@ function Song() {
     };
 
     const getLyrics = async () => {
-        const response = await axios.get(`http://localhost:5000/scrape`);
+        const response = await axios.get(`http://localhost:5000/scrape/${id}`);
         lyricsRef.current.innerHTML = response.data;
         setLyrics(response.data);
     };
+
+    const getComments = async () => {
+        const response = await axios.get(`http://localhost:5000/song/${id}/comments`);
+        setComments(response.data);
+    }
+
+    const displayComments = () => {
+        return comments.map((comment) => {
+            return <CommentCard key={comment._id} owner={comment.owner} comment={comment.comment} date={comment.date} />
+        })
+    }
 
     return (
         <div className="page">
@@ -91,7 +107,10 @@ function Song() {
                     ></div>
                 </div>
             </div>
-            <WriteComment />
+            <div>
+                <WriteComment />
+                {displayComments()}
+            </div>
         </div>
     );
 }
