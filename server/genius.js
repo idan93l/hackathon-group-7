@@ -8,7 +8,7 @@ const searchLyrics =  (song) => {
   },
 })
   .then((response) => {
-    console.log(response.data.response.hits);
+    // console.log(response.data.response.hits);
   })
   .catch((err) => {
     console.error(err);

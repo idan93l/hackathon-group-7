@@ -15,7 +15,7 @@ const songSchema = new mongoose.Schema({
       }
     }
   },
-  owner: {
+  writer: {
     type: String,
     require: true
   },
