@@ -1,5 +1,5 @@
 :root {
-  --nav-height: calc(2vh + 2vw + 23px);
+  --nav-height: calc(1.5vh + 1.5vw + 23px);
 }
 
 * {
@@ -8,7 +8,6 @@
 }
 
 .page {
-  padding: 0 1.5rem;
   padding-top: var(--nav-height);
 }
 

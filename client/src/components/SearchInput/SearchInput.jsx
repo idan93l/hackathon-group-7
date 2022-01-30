@@ -1,11 +1,11 @@
 import React from "react";
 import "./searchInput.css";
 
-const SearchInput = () => {
+const SearchInput = (props) => {    
     return (
-        <div>
-            <input></input>
-            <button>Search</button>
+        <div className="search-container">
+            <input className="search-input"></input>
+            <div role={"button"} onClick={props.handleClick} className="search-button">Search</div>
         </div>
     );
 };
