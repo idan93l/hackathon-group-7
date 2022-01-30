@@ -11,8 +11,7 @@ const getAllSongs = async (req, res) => {
 }
 
 const postSong  = async (req, res) => {
-    const {name, lyrics, comments, owner} = req.body;
-    const newSong = new Song({name, lyrics, comments, owner})
+    const newSong = new Song(req.body)
     console.log("new song", newSong);
     try {
         await newSong.save();
