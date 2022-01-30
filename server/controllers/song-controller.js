@@ -10,6 +10,18 @@ const getAllSongs = async (req, res) => {
     }
 }
 
+const getSong = async (req, res) => {
+    try{
+        const song = await Song.findById(id);
+        if (!song) {
+            return res.status(400).send({ error: "Cannot find song" });
+        }
+    }
+    catch (e) {
+        res.status(400).send(e.message)
+    }
+}
+
 const postSong  = async (req, res) => {
     const newSong = new Song(req.body)
     console.log("new song", newSong);
@@ -36,4 +48,8 @@ const deleteSong = async (req, res) => {
   };
 
 
-module.exports = {getAllSongs, postSong, deleteSong}
+module.exports = {
+    getAllSongs, 
+    getSong,
+    postSong, 
+    deleteSong}
