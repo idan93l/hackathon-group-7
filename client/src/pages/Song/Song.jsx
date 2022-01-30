@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios'
 import WriteComment from "../../components/WriteComment/WriteComment";
+import songApi from './../../api/api'
 import './song.css'
 
-function Song() {
+function Song({chosenSong}) {
   const [lyrics, setLyrics] = useState("");
   const [lang, setLang] = useState("")
 
@@ -11,13 +12,13 @@ function Song() {
   const translatedLyricsRef = useRef();
 
   useEffect(() => {
-    getLyrics();
-  }, [])
+    chosenSong && getLyrics();
+  }, [chosenSong,lang])
 
   const getLyricsContent = async () => {
     const text = lyrics.split('<span class="ReferentFragmentVariantdesktop__Highlight-sc-1837hky-1 jShaMP">').join(" ").split("</span>").join(" ").replaceAll("<br>", ",,,").replace(",,, ", "")
-    const response = await axios.post("http://localhost:5000/translate", {
-      lang: "he",  
+    const response = await songApi.post("/translate", {
+      lang: lang,  
       text: text
     })
     const newlyrics = response.data[0].text.replaceAll(",,,", "<br>")
@@ -25,7 +26,7 @@ function Song() {
   }
 
   const getLyrics = async () => {
-    const response = await axios.get("http://localhost:5000/scrape");
+    const response = await songApi.get("/scrape");
     lyricsRef.current.innerHTML = response.data
     setLyrics(response.data)
   }

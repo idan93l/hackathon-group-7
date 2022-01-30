@@ -18,12 +18,12 @@ const songRoute = require("./routes/song-routes")
 app.use("/api/songs", songRoute)
 const scraper = require("./scraper");
 
-app.get("/scrape", async (req, res) => {
+app.get("api/songs/scrape", async (req, res) => {
     const response = await scraper();
     res.send(response);
 });
 
-app.post('/translate', (req, res) => {
+app.post('api/songs/translate', (req, res) => {
     const { text,lang } = req.body
     const options = {
         method: 'POST',
