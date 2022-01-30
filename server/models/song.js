@@ -1,30 +1,42 @@
 const mongoose = require("mongoose");
-const validator = require("validator")
-
+const validator = require("validator");
 
 const songSchema = new mongoose.Schema({
   songName: {
     type: String,
-    require: true,
+    require: true
   },
   date: {
-    type: Number,
-    default: 0,
-    validate(value){
-      if (!validator.isDate(value)){
-        throw new Error('Invalid Date')
+    type: Date,
+    default: Date.now,
+    validate(value) {
+      if (!validator.isDate(value)) {
+        throw new Error("Invalid Date");
       }
     }
   },
   owner: {
     type: String,
-    require: true,
+    require: true
   },
   lyrics: {
     type: String,
-    require: true,
-  }
-})
+    require: true
+  },
+  comments: [
+    {
+      comment: {
+        type: String
+      },
+      owner: {
+        type: String
+      },
+      date: {
+          default: Date.now
+      }
+    }
+  ]
+});
 
 
 const Song = mongoose.model("Song", songSchema);
