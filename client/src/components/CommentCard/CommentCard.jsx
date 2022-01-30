@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-function CommentCard({comment, date, owner}) {
-  return 
+function CommentCard({ comment, date, owner }) {
+  return;
   <div className="CommentCard">
-  <div>{owner}</div>
-  <div>{comment}</div>
-  <div>{date}</div>
+    <div>{owner}</div>
+    <div>{comment}</div>
+    <div>{date}</div>
   </div>;
 }
 
