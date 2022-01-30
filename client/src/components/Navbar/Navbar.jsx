@@ -1,8 +1,8 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
 function Navbar() {
-  const backgroundAll = "#ffcb9a";
-  const backgroundClick = "#ffdcba";
+  const backgroundAll = "#b1eefa";
+  const backgroundClick = "#acd7e6";
   const navigate = useNavigate();
   const location = useLocation();
 

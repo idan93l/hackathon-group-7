@@ -1,24 +1,24 @@
 .homepage {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .top-section {
-    min-height: 70vh;
-    background: url("./homepage_bg.png") center center / cover no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  min-height: 100vh;
+  background: url("./homepage_bg.png") center center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .main-title {
-    font-size: 4rem;
+  font-size: 4rem;
 }
 
 .sub-title {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .bottom-section {
-    min-height: 30vh;
-    background: cornsilk;
+  min-height: 30vh;
+  background: cornsilk;
 }
