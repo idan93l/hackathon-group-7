@@ -1,17 +1,8 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
 
 const songSchema = new mongoose.Schema({
 
   songName: {
-    type: String,
-    require: true
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-    },
-  writer: {
     type: String,
     require: true
   },
@@ -28,7 +19,8 @@ const songSchema = new mongoose.Schema({
         type: String
       },
       date: {
-          default: Date.now
+        //   default: Date.now
+        // TODO: add default date
       }
     }
   ]

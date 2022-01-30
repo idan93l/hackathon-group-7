@@ -13,6 +13,10 @@ require("./db/mongoose")
 const publicPath = path.join(__dirname, "../client/build");
 app.use(express.static(publicPath));
 searchLyrics("hurt");
+const songRoute = require("./routes/song-routes")
+
+
+app.use("/api/songs", songRoute)
 
 app.post('/translate', (req, res) => {
     const { text } = req.body
