@@ -1,13 +1,16 @@
 .homepage {
   min-height: 100vh;
+  text-align: center;
 }
 
 .top-section {
-  min-height: 100vh;
+  margin-top: calc(2vh + 2vw + 23px);
+  min-height: 90vh;
   background: url("./homepage_bg.png") center center / cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .main-title {
@@ -18,7 +21,24 @@
   font-size: 2rem;
 }
 
-.bottom-section {
+.about-section {
   min-height: 30vh;
-  background: cornsilk;
+  background: #007d8c;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+}
+
+.about-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 10vh;
+  width: 10vw;
+  padding: 2rem;
+  margin: 2rem 0;
+  background: #97d6e3;
+  border-radius: 10px;
 }
