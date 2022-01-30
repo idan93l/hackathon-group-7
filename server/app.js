@@ -1,20 +1,15 @@
-
-const express = require('express')
-const app = express()
-const cors = require('cors')
+const express = require("express");
+const app = express();
+const cors = require("cors");
 const axios = require("axios");
-require('dotenv').config()
-app.use(express.json())
-app.use(cors())
-app.use(express.urlencoded({extended : true}))
-require("./db/mongoose")
+require("dotenv").config();
+app.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+require("./db/mongoose");
+const searchLyrics =  require("./genius")
 
-app.get('/', (req,res) => {
-    console.log('hello from frontend!')
-})
-
-
-
+searchLyrics("hurt");
 
 app.post('/translate', (req,res) => {
     const { text } = req.body
@@ -35,7 +30,8 @@ app.post('/translate', (req,res) => {
     }).catch(function (error) {
         res.status(400).send(error);
     });
-})
-  
+});
 
-app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
+app.listen(process.env.PORT, () =>
+  console.log(`listening on port ${process.env.PORT}`)
+);
