@@ -31,4 +31,10 @@ axios.request(options).then(function (response) {
 	console.error(error);
 });
 
+
+const publicPath = path.join(__dirname, "../client/build");
+app.use(express.static(publicPath));
+
+
+
 app.listen(process.env.PORT, () => console.log(`listening on port ${process.env.PORT}`))
