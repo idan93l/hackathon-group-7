@@ -2,11 +2,13 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const path = require("path")
 require('dotenv').config()
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({extended : true}))
 require("./db/mongoose")
+
 
 app.get('/', (req,res) => {
     console.log('hello from frontend!')
