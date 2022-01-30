@@ -6,7 +6,7 @@ const getAllSongs = async (req, res) => {
         const songs = await Song.find();
         res.status(200).send(songs)
     } catch (e) {
-        res.status(400).send(e)
+        res.status(400).send(e.message)
     }
 }
 
@@ -18,11 +18,22 @@ const postSong  = async (req, res) => {
         res.status(201).send(newSong)
     } catch (e) {
         console.log(e);
-        res.status(400).send(e)
+        res.status(400).send(e.message)
     }
 }
 
+const deleteSong = async (req, res) => {
+    const { id } = req.params;
+    try {
+      const song = await Song.findByIdAndDelete(id);
+      if (!song) {
+        return res.status(400).send({ error: "Cannot find song" });
+      }
+      res.send(song);
+    } catch (e) {
+      res.status(400).send(e.message);
+    }
+  };
 
 
-
-module.exports = {getAllSongs, postSong}
+module.exports = {getAllSongs, postSong, deleteSong}

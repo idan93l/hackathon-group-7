@@ -6,7 +6,7 @@
 
 .top-section,
 .bottom-section {
-    margin-top: calc(2vh + 2vw + 23px);
+    margin-top: calc(1.5vh + 1.5vw + 23px);
     min-height: 90vh;
     background: url("./homepage_bg.png") center center / cover no-repeat;
     display: flex;
@@ -57,4 +57,15 @@
 .item-desc {
     font-size: 2rem;
     margin: 2rem 0;
+}
+
+.btn {
+    font-size: 2rem;
+    background: #d53f23;
+    font-size: 2rem;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    border: 2px solid #000;
 }
