@@ -1,24 +1,25 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import HomePage from "./components/HomePage";
-import Search from "./components/Search";
-import Song from "./components/Song";
-import SongList from "./components/SongList";
+import HomePage from "./pages/HomePage";
+import Search from "./pages/Search";
+import Song from "./pages/Song";
+import SongList from "./pages/SongList";
 
-export default function App() {
+function App() {
   return (
     <div>
-      <BrowserRouter>
+      <Router>
         <Navbar />
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/search" exact component={Search} />
-          <Route path="/Song" exact component={Song}/>
-          <Route path="/songList" exact component={SongList} />
-        </Switch>
-      </BrowserRouter>
+        <Routes>
+          <Route path="/" exact element={<HomePage />} />
+          <Route path="/search" exact element={<Search />} />
+          <Route path="/song" exact element={<Song />} />
+          <Route path="/songlist" exact element={<SongList />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
+export default App;
