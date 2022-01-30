@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
 const songSchema = new mongoose.Schema({
-
+  songId: {
+    type: Number
+  },
   songName: {
     type: String,
     require: true
@@ -25,7 +27,6 @@ const songSchema = new mongoose.Schema({
     }
   ]
 });
-
 
 const Song = mongoose.model("Song", songSchema);
 module.exports = Song;
