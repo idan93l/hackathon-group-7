@@ -11,11 +11,14 @@ const getAllSongs = async (req, res) => {
 }
 
 const getSong = async (req, res) => {
+    const { id } = req.params
+    console.log('song id @getSong: ',id)
     try{
         const song = await Song.findById(id);
         if (!song) {
-            return res.status(400).send({ error: "Cannot find song" });
+            res.status(200).send(false);
         }
+            res.status(200).send(song)
     }
     catch (e) {
         res.status(400).send(e.message)
@@ -48,8 +51,12 @@ const deleteSong = async (req, res) => {
   };
 
   const searchSongs = async (req,res) => {
-          const results = await searchLyrics(req.body.query)
-          res.send(results)
+        try {
+            const results = await searchLyrics(req.body.query)
+            res.send(results)
+        }catch(err){
+            res.send([])
+        }
   } 
 
 

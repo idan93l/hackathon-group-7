@@ -4,7 +4,7 @@ const songRoute = express.Router()
 
 
 songRoute.get("/", songs.getAllSongs)
-songRoute.get("/:songId", songs.getSong)
+songRoute.get("/:id", songs.getSong)
 songRoute.post("/search", songs.searchSongs)
 songRoute.post("/", songs.postSong)
 songRoute.delete("/:songId",songs.deleteSong) 
