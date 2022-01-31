@@ -13,11 +13,13 @@ const getAllSongs = async (req, res) => {
 const getSong = async (req, res) => {
     const { id } = req.params
     try{
-        const song = await Song.findById(id);
+        const song = await Song.findOne({songId : id});
         if (!song) {
-            res.status(200).send(false);
+            console.log('song not found')
+            return res.status(200).send(false);
         }
-            res.status(200).send(song)
+            console.log('song  found!')
+            return res.status(200).send(song)
     }
     catch (e) {
         res.status(400).send(e.message)

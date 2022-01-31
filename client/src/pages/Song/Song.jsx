@@ -4,10 +4,10 @@ import WriteComment from "../../components/WriteComment/WriteComment";
 import "./song.css";
 import CommentCard from "../../components/CommentCard/CommentCard";
 import songApi from './../../api/api'
+import Spinner from "../../components/Spinner/Spinner";
 
 function Song({chosenSong}) {
     const id = 1;
-
     const [lyrics, setLyrics] = useState("");
     const [lang, setLang] = useState("");
     const [comments, setComments] = useState([]);
@@ -46,6 +46,7 @@ function Song({chosenSong}) {
     };
 
     const getLyrics = async () => {
+
         const response = await songApi.post(`/scrape`, {
           url: chosenSong.result.url
         });
@@ -56,6 +57,7 @@ function Song({chosenSong}) {
     const getComments = async () => {
         console.log('chosen song: ',chosenSong)
         const isSongInList = await songApi.get(`/${chosenSong.result.id}`)
+        console.log('song in list? ', isSongInList.data)
         // const response = await songApi.get(`/song/${id}/comments`);
         // setComments(response.data);
     }
