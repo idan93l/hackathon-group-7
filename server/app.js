@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 const axios = require("axios");
-const searchLyrics = require("./genius");
+
 require("dotenv").config();
 app.use(express.json());
 app.use(cors());
@@ -11,18 +11,18 @@ app.use(express.urlencoded({ extended: true }));
 require("./db/mongoose");
 const publicPath = path.join(__dirname, "../client/build");
 app.use(express.static(publicPath));
-searchLyrics("hurt");
+
 const songRoute = require("./routes/song-routes");
 
 app.use("/api/songs", songRoute);
 const scraper = require("./scraper");
 
-app.get("api/songs/scrape", async (req, res) => {
-    const response = await scraper();
+app.post("/api/songs/scrape", async (req, res) => {
+    const response = await scraper(req.body.url);
     res.send(response);
 });
 
-app.post('api/songs/translate', (req, res) => {
+app.post('/api/songs/translate', (req, res) => {
     const { text,lang } = req.body
     const options = {
         method: "POST",

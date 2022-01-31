@@ -1,9 +1,9 @@
 const puppeteer = require("puppeteer");
 
-const scrape = async () => {
+const scrape = async (url) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto("https://genius.com/Nine-inch-nails-hurt-lyrics");
+    await page.goto(`${url}`);
 
     const elements = await page.$$("#lyrics-root-pin-spacer a");
 
