@@ -5,7 +5,7 @@ import "./song.css";
 import CommentCard from "../../components/CommentCard/CommentCard";
 import songApi from './../../api/api'
 
-function Song() {
+function Song({chosenSong}) {
     const id = 1;
 
     const [lyrics, setLyrics] = useState("");
@@ -16,8 +16,8 @@ function Song() {
     const translatedLyricsRef = useRef();
 
     useEffect(() => {
-        getLyrics();
-        getComments();
+        chosenSong.result && getLyrics();
+        chosenSong.result && getComments();
     }, []);
 
     const getLyricsContent = async (e) => {
@@ -46,7 +46,11 @@ function Song() {
     };
 
     const getLyrics = async () => {
-        const response = await songApi.get(`/scrape/${id}`);
+        console.log('url: ',chosenSong.result.url)
+        const response = await songApi.post(`/scrape`, {
+          url: chosenSong.result.url
+        });
+        console.log('response data @getLyrics: ',response.data)
         lyricsRef.current.innerHTML = response.data;
         setLyrics(response.data);
     };

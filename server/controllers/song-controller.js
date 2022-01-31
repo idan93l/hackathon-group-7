@@ -1,5 +1,5 @@
 const Song = require("../models/song")
-
+const searchLyrics = require('./../genius')
 
 const getAllSongs = async (req, res) => {
     try {
@@ -47,9 +47,16 @@ const deleteSong = async (req, res) => {
     }
   };
 
+  const searchSongs = async (req,res) => {
+          const results = await searchLyrics(req.body.query)
+          res.send(results)
+  } 
+
 
 module.exports = {
     getAllSongs, 
     getSong,
     postSong, 
-    deleteSong}
+    deleteSong,
+    searchSongs
+}
