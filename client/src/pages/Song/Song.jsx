@@ -46,18 +46,18 @@ function Song({chosenSong}) {
     };
 
     const getLyrics = async () => {
-        console.log('url: ',chosenSong.result.url)
         const response = await songApi.post(`/scrape`, {
           url: chosenSong.result.url
         });
-        console.log('response data @getLyrics: ',response.data)
         lyricsRef.current.innerHTML = response.data;
-        setLyrics(response.data);
+        response.data && setLyrics(response.data);
     };
 
     const getComments = async () => {
-        const response = await songApi.get(`/song/${id}/comments`);
-        setComments(response.data);
+        console.log('chosen song: ',chosenSong)
+        const isSongInList = await songApi.get(`/${chosenSong.result.id}`)
+        // const response = await songApi.get(`/song/${id}/comments`);
+        // setComments(response.data);
     }
 
     const displayComments = () => {

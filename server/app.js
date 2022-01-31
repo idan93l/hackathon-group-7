@@ -18,8 +18,12 @@ app.use("/api/songs", songRoute);
 const scraper = require("./scraper");
 
 app.post("/api/songs/scrape", async (req, res) => {
-    const response = await scraper(req.body.url);
-    res.send(response);
+    try {
+        const response = await scraper(req.body.url);
+        res.send(response);
+    }catch(err){
+        res.send('couldnt retrieve lyrics. try again')
+    }
 });
 
 app.post('/api/songs/translate', (req, res) => {
