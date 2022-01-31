@@ -16,7 +16,8 @@
 
 .search-button {
     height: var(--search-height);
-    background: #d53f23;
+    background: lightgrey;
+    border: 1px solid black;
     font-size: 2rem;
     border-radius: 10px;
     padding: 0.5rem 1rem;
