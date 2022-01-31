@@ -8,7 +8,6 @@ import Spinner from "../../components/Spinner/Spinner";
 
 function Song({chosenSong}) {
     const id = 1;
-
     const [lyrics, setLyrics] = useState("");
     const [lang, setLang] = useState("");
     const [comments, setComments] = useState([]);
@@ -47,6 +46,7 @@ function Song({chosenSong}) {
     };
 
     const getLyrics = async () => {
+
         const response = await songApi.post(`/scrape`, {
           url: chosenSong.result.url
         });

@@ -24,7 +24,7 @@ function Search({setChosenSong}) {
 
   const displaySongs = () => {
     return songs.map((song) => {
-      return <div onClick={(song) => handleChooseSong(song)}  key={song.result.id} className='song-item'>{song.result.artist_names} - {song.result.title}</div>
+      return <div onClick={() => handleChooseSong(song)}  key={song.result.id} className='song-item'>{song.result.artist_names} - {song.result.title}</div>
     })
   }
 
