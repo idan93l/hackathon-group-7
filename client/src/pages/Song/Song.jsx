@@ -56,6 +56,7 @@ function Song({chosenSong}) {
     const getComments = async () => {
         console.log('chosen song: ',chosenSong)
         const isSongInList = await songApi.get(`/${chosenSong.result.id}`)
+        console.log('song in list? ', isSongInList.data)
         // const response = await songApi.get(`/song/${id}/comments`);
         // setComments(response.data);
     }
