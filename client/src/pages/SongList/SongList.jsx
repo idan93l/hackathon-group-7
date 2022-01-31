@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SearchInput from '../../components/SearchInput/SearchInput'
 import songApi from './../../api/api'
 import './songList.css';
+import Spinner from '../../components/Spinner/Spinner';
 
 function SongList({setChosenSong}) {
   const [songs, setSongs] = useState([]);
@@ -25,10 +26,10 @@ function SongList({setChosenSong}) {
 
 
   return <div className="page">
-
-      <div>
+    <Spinner></Spinner>
+      {/* <div>
         {displaySongs()}
-      </div>
+      </div> */}
     </div>;
 }
 export default SongList;
