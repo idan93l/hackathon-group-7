@@ -113,7 +113,7 @@ function Song({chosenSong}) {
                 </div>
             </div>
             <div>
-                <WriteComment />
+                <WriteComment chosenSong = {chosenSong} lyrics = {lyrics}/>
                 {displayComments()}
             </div>
         </div>

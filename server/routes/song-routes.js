@@ -7,7 +7,7 @@ songRoute.get("/", songs.getAllSongs)
 songRoute.get("/:id", songs.getSong)
 songRoute.post("/search", songs.searchSongs)
 songRoute.post("/", songs.postSong)
-songRoute.delete("/:songId",songs.deleteSong) 
+songRoute.delete("/:id",songs.deleteSong) 
 
 module.exports = songRoute
 
