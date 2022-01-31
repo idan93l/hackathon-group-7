@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate} from "react-router-dom";
 import songApi from './../../api/api'
 import axios from 'axios'
 import SearchInput from '../../components/SearchInput/SearchInput'
 import './search.css';
 
 function Search({setChosenSong}) {
+  const navigate = useNavigate();
+
   const [songs, setSongs] = useState([]);
   const [query, setQuery] = useState('')
 
@@ -20,9 +23,14 @@ function Search({setChosenSong}) {
   }
 
   const displaySongs = () => {
-    return songs.map((song, i) => {
-      return <div onClick={() => setChosenSong(song)}  key={song.result.id}>{song.result.artist_names} - {song.result.title}</div>
+    return songs.map((song) => {
+      return <div onClick={(song) => handleChooseSong(song)}  key={song.result.id} className='song-item'>{song.result.artist_names} - {song.result.title}</div>
     })
+  }
+
+  const handleChooseSong = (song) => {
+    setChosenSong(song)
+    navigate("/song")
   }
 
   useEffect(() => {
