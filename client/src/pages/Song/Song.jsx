@@ -7,6 +7,10 @@ import songApi from './../../api/api'
 import Spinner from "../../components/Spinner/Spinner";
 
 function Song({chosenSong}) {
+<<<<<<< HEAD
+=======
+    const id = 1;
+>>>>>>> main
     const [lyrics, setLyrics] = useState("");
     const [lang, setLang] = useState("he");
     const [comments, setComments] = useState([]);
@@ -48,8 +52,12 @@ function Song({chosenSong}) {
     };
 
     const getLyrics = async () => {
+<<<<<<< HEAD
         console.log(chosenSong.result.url);
         setSpinner(true)
+=======
+
+>>>>>>> main
         const response = await songApi.post(`/scrape`, {
           url: chosenSong.result.url
         });

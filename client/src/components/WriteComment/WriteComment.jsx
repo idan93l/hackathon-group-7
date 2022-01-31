@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import myApi from "../../api/api";
 import CommentCard from "../CommentCard/CommentCard";
@@ -7,6 +7,12 @@ import CommentCard from "../CommentCard/CommentCard";
 function WriteComment({chosenSong, lyrics}) {
   const [userComment, setUserComment] = useState("");
   const [userOwner, setUserOwner] = useState("");
+  const [flag, setFlag] = useState(false);
+  const [comments, setComment] = useState([])
+
+  useEffect (()=> {
+
+  },[flag])
 
   const inputComment = (el) => {
     setUserComment(el.target.value);
@@ -15,7 +21,6 @@ function WriteComment({chosenSong, lyrics}) {
     setUserOwner(el.target.value);
   };
   const handleComment = async () => {
-    console.log(chosenSong)
     const { data } = await myApi.post(`/`, {
       songId: Number(chosenSong.result.id),
       songName: chosenSong.result.title,
@@ -27,12 +32,8 @@ function WriteComment({chosenSong, lyrics}) {
         date: new Date(),
       }]
     });
-    console.log(data);
-    data.map((el) => {
-      return (
-        <div key={el._id}>{CommentCard(el.comment, el.date, el.owner)}</div>
-      );
-    });
+    setFlag(!flag);
+    setComment(data.comments);
   };
   return (
     <div className="page">
@@ -47,6 +48,11 @@ function WriteComment({chosenSong, lyrics}) {
         placeholder="Owner"
       ></input>
       <button onClick={handleComment}>Add</button>
+      {comments.map((el) => {
+        console.log(el);
+        return (
+          <CommentCard key={el._id} text={el.text} date={el.date} owner={el.owner}/>
+      )})}
     </div>
   );
 }

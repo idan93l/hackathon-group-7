@@ -1,11 +1,13 @@
 import React from "react";
+import "./commentCard.css"
 
-function CommentCard({ comment, date, owner }) {
-  return;
-  <div className="CommentCard">
-    <div>{owner}</div>
-    <div>{comment}</div>
-    <div>{date}</div>
+
+function CommentCard({ text, date, owner }) {
+  {console.log("CommentCard",text)}
+  return <div className="CommentCard">
+    <div>{owner}:</div>
+    <div>{text}</div>
+    <div>{date.slice(0,10)}</div>
   </div>;
 }
 
