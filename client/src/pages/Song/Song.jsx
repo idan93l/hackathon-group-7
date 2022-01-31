@@ -7,11 +7,10 @@ import songApi from './../../api/api'
 import Spinner from "../../components/Spinner/Spinner";
 
 function Song({chosenSong}) {
-    const id = 1;
-
     const [lyrics, setLyrics] = useState("");
-    const [lang, setLang] = useState("");
+    const [lang, setLang] = useState("he");
     const [comments, setComments] = useState([]);
+    const [spinner, setSpinner] = useState(false)
 
     const lyricsRef = useRef();
     const translatedLyricsRef = useRef();
@@ -32,6 +31,7 @@ function Song({chosenSong}) {
             .join(" ")
             .replaceAll("<br>", ",,,")
             .replace(",,, ", "");
+        // setSpinner(true)
         const response = await songApi.post("/translate", {
             lang: lang,
             text: text,
@@ -44,20 +44,26 @@ function Song({chosenSong}) {
         } else {
             translatedLyricsRef.current.classList.remove("rtl-text");
         }
+        // setSpinner(false)
     };
 
     const getLyrics = async () => {
+        console.log(chosenSong.result.url);
+        setSpinner(true)
         const response = await songApi.post(`/scrape`, {
           url: chosenSong.result.url
         });
         lyricsRef.current.innerHTML = response.data;
         response.data && setLyrics(response.data);
+        setSpinner(false)
     };
 
     const getComments = async () => {
+        setSpinner(true)
         console.log('chosen song: ',chosenSong)
         const isSongInList = await songApi.get(`/${chosenSong.result.id}`)
         console.log('song in list? ', isSongInList.data)
+        setSpinner(false)
         // const response = await songApi.get(`/song/${id}/comments`);
         // setComments(response.data);
     }
@@ -68,6 +74,9 @@ function Song({chosenSong}) {
         })
     }
 
+    if (spinner) {
+        return <Spinner />
+    }
     return (
         <div className="page">
             <div className="all-lyrics-section">
