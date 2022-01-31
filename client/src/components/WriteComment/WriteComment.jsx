@@ -4,7 +4,7 @@ import { useState } from "react";
 import myApi from "../../api/api";
 import CommentCard from "../CommentCard/CommentCard";
 
-function WriteComment() {
+function WriteComment({chosenSong, lyrics}) {
   const [userComment, setUserComment] = useState("");
   const [userOwner, setUserOwner] = useState("");
 
@@ -15,10 +15,17 @@ function WriteComment() {
     setUserOwner(el.target.value);
   };
   const handleComment = async () => {
-    const { data } = await myApi.post(`/song`, {
-      comment: userComment,
-      date: new Date(),
-      owner: userOwner,
+    console.log(chosenSong)
+    const { data } = await myApi.post(`/`, {
+      songId: Number(chosenSong.result.id),
+      songName: chosenSong.result.title,
+      songArtist: chosenSong.result.artist_names,
+      lyrics:lyrics,
+      comments: [{
+        text: userComment,
+        owner: userOwner,
+        date: new Date(),
+      }]
     });
     console.log(data);
     data.map((el) => {

@@ -12,7 +12,6 @@ const getAllSongs = async (req, res) => {
 
 const getSong = async (req, res) => {
     const { id } = req.params
-    console.log('song id @getSong: ',id)
     try{
         const song = await Song.findOne({songId : id});
         if (!song) {
@@ -40,7 +39,7 @@ const postSong  = async (req, res) => {
 }
 
 const deleteSong = async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.params
     try {
       const song = await Song.findByIdAndDelete(id);
       if (!song) {
