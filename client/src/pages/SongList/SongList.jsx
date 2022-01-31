@@ -1,23 +1,35 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate} from "react-router-dom";
 import SearchInput from '../../components/SearchInput/SearchInput'
 import songApi from './../../api/api'
 import './songList.css';
 import Spinner from '../../components/Spinner/Spinner';
 
 function SongList({setChosenSong}) {
+  const navigate = useNavigate();
   const [songs, setSongs] = useState([]);
-
-
+  const [spinner, setSpinner] = useState(false)
 
   const displaySongs = () => {
     return songs.map((song) => {
-      return <div onClick={() => setChosenSong(song)} key={song.songId}>{song.songArtist} - {song.songName}</div>
+      return <div onClick={() => handleChooseSong(song)} key={song.songId} className='song-item'>{song.songArtist} - {song.songName}</div>
     })
   }
 
+  const handleChooseSong = (song) => {
+    setChosenSong(song)
+    navigate("/song")
+  }
+
   const getSongs = async () => {
-    const songList = await songApi.get('/')
-    setSongs(songList.data)
+    try {
+      setSpinner(true)
+      const songList = await songApi.get('/')
+      setSongs(songList.data)
+    } catch (err) {
+      console.log(err);
+    }
+    setSpinner(false)
   }
 
   useEffect(() => {
@@ -25,11 +37,13 @@ function SongList({setChosenSong}) {
   }, [])
 
 
+  if (spinner) {
+    return <Spinner />
+  }
   return <div className="page">
-    <Spinner></Spinner>
-      {/* <div>
+      <div>
         {displaySongs()}
-      </div> */}
+      </div>
     </div>;
 }
 export default SongList;

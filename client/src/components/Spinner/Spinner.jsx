@@ -4,21 +4,21 @@ import "./spinner.css"
 
 export default function Spinner(props) {
     return (
-        <div>
+        <div className="spinner-container">
             <div id="trnt">
-                <div class="trnt_turntable">
-                    <div class="trnt_floor"></div>
-                    <div class="trnt_arm"></div>
-                    <div class="trnt_vinyl">
-                        <div class="trnt_wheel trnt_wheel-1"></div>
-                        <div class="trnt_wheel trnt_wheel-2"></div>
-                        <div class="trnt_wheel trnt_wheel-3"></div>
-                        <div class="trnt_cover"></div>
-                        <div class="trnt_middle"></div>
-                        <div class="trnt_hole"></div>
+                <div className="trnt_turntable">
+                    <div className="trnt_floor"></div>
+                    <div className="trnt_arm"></div>
+                    <div className="trnt_vinyl">
+                        <div className="trnt_wheel trnt_wheel-1"></div>
+                        <div className="trnt_wheel trnt_wheel-2"></div>
+                        <div className="trnt_wheel trnt_wheel-3"></div>
+                        <div className="trnt_cover"></div>
+                        <div className="trnt_middle"></div>
+                        <div className="trnt_hole"></div>
                     </div>
                 </div>
-                <span class="trnt_text">getting funky...</span>
+                <span className="trnt_text">Getting funky...</span>
             </div>
         </div>
     )
