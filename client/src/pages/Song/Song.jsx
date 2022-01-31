@@ -4,6 +4,7 @@ import WriteComment from "../../components/WriteComment/WriteComment";
 import "./song.css";
 import CommentCard from "../../components/CommentCard/CommentCard";
 import songApi from './../../api/api'
+import Spinner from "../../components/Spinner/Spinner";
 
 function Song({chosenSong}) {
     const id = 1;
